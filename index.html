@@ -28,9 +28,40 @@
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <div role="main">
 
-  </div>
+    <!-- Todo App Interface -->
+
+    <div id="todoapp">
+
+      <div class="title">
+        <h1>Todos</h1>
+      </div>
+
+      <div class="content">
+
+        <div id="create-todo">
+          <input id="new-todo" placeholder="What needs to be done?" type="text" />
+          <span class="ui-tooltip-top" style="display:none;">Press Enter to save this task</span>
+        </div>
+
+        <div id="todos">
+          <input class="check mark-all-done" type="checkbox"/>
+          <label for="check-all">Mark all as complete</label>
+          <ul id="todo-list"></ul>
+        </div>
+
+        <div id="todo-stats"></div>
+
+      </div>
+
+    </div>
+
+  
+    <div id="credits">
+      Created by
+      <br />
+      <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>. <br />Cleanup, edits: <a href="http://addyosmani.com">Addy Osmani</a>.
+    </div>
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -44,14 +75,12 @@
   <script src="vendor/log.js"></script>
   <script src="vendor/underscore.js"></script>
   <script src="vendor/backbone.js"></script>
-  <script src="vendor/handlebars.runtime-1.0.0.beta.6.js"></script>
   <script src="application.js"></script>
-  <script src="lib/util.js"></script>
-  <script src="lib/jquery.plugin.js"></script>
-  <script src="lib/Backbone.plugin.js"></script>
+  <script src="lib/Backbone.localstorage.js"></script>
   <script src="model/Todo.js"></script>
   <script src="template/templates.js"></script>
-  <script src="view/todo/TodoView.js"></script>
+  <script src="view/TodoView.js"></script>
+  <script src="view/AppView.js"></script>
   <script src="Router.js"></script>
   <!-- end scripts -->
 
