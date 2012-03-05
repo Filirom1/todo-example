@@ -8,9 +8,6 @@ xx.view.AppView = Backbone.View.extend({
   // the App already present in the HTML.
   el: "",
 
-  // Our template for the line of statistics at the bottom of the app.
-  statsTemplate: JST['stats-template'],
-
   // Delegated events for creating new items, and clearing completed ones.
   events: {
     "keypress #new-todo":  "createOnEnter",
@@ -19,6 +16,7 @@ xx.view.AppView = Backbone.View.extend({
     "click .mark-all-done": "toggleAllComplete"
   },
 
+  // We will bind this view on the event of this collection
   collection: xx.model.todos,
 
   // At initialization we bind to the relevant events on the `this.collection`
@@ -34,21 +32,13 @@ xx.view.AppView = Backbone.View.extend({
     this.collection.bind('reset',   this.addAll);
     this.collection.bind('all',     this.render);
 
+    this.statsView = new xx.view.StatsView({el: this.$('#todo-stats')});
     this.collection.fetch();
   },
 
-  // Re-rendering the App just means refreshing the statistics -- the rest
-  // of the app doesn't change.
+  // Refresh checkboxs
   render: function() {
-    var done = this.collection.done().length;
     var remaining = this.collection.remaining().length;
-
-    this.$('#todo-stats').html(this.statsTemplate({
-      total:      this.collection.length,
-      done:       done,
-      remaining:  remaining
-    }));
-
     this.allCheckbox.checked = !remaining;
   },
 
